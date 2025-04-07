@@ -16,10 +16,6 @@ on:
         required: true
         type: string
 
-      app-identifier:
-        required: true
-        type: string
-
     secrets:
       API_KEY_INFO:
         required: true
