@@ -1,0 +1,58 @@
+name: Deploy iOS App to TestFlight
+
+on:
+  workflow_call:
+    inputs:
+      ruby-version:
+        required: false
+        type: string
+        default: '3.3.5'
+
+      working-directory:
+        required: true
+        type: string
+
+      scheme:
+        required: true
+        type: string
+
+      app-identifier:
+        required: true
+        type: string
+
+    secrets:
+      API_KEY_INFO:
+        required: true
+      MATCH_PASSWORD:
+        required: true
+      MATCH_GIT_BASIC_AUTHORIZATION:
+        required: true
+
+jobs:
+  deployIos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ inputs.ruby-version }}
+          bundler-cache: true
+          working-directory: ${{ inputs.working-directory }}
+
+      - name: Set up API key file
+        run: |
+          mkdir -p ${{ inputs.working-directory }}/fastlane
+          echo "${{ secrets.API_KEY_INFO }}" > ${{ inputs.working-directory }}/fastlane/api_key_info.json
+          
+      - name: Run Fastlane beta lane
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+        run: |
+          cd ${{ inputs.working-directory }}
+          bundle exec fastlane ios beta
+
