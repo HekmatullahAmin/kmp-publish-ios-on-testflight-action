@@ -42,8 +42,7 @@ jobs:
       - name: Set up API key file
         run: |
           mkdir -p "${{ inputs.working-directory }}/fastlane"
-#          echo "${{ secrets.API_KEY_INFO }}" > ${{ inputs.working-directory }}/fastlane/api_key_info.json
-          printf '%s' "${{ secrets.API_KEY_INFO }}" > ${{ inputs.working-directory }}/fastlane/api_key_info.json
+          printf '%s' "${{ secrets.API_KEY_INFO }}" > "${{ inputs.working-directory }}/fastlane/api_key_info.json"
 
       - name: Run Fastlane beta lane
         env:
@@ -52,4 +51,7 @@ jobs:
         run: |
           cd ${{ inputs.working-directory }}
           bundle exec fastlane ios beta
+
+#          echo "${{ secrets.API_KEY_INFO }}" > ${{ inputs.working-directory }}/fastlane/api_key_info.json
+#          printf '%s' "${{ secrets.API_KEY_INFO }}" > ${{ inputs.working-directory }}/fastlane/api_key_info.json
 
