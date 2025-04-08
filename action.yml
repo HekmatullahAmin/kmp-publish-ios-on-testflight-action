@@ -30,7 +30,6 @@ runs:
     - name: Set up API key file
       run: |
         mkdir -p fastlane
-#        echo "${{ inputs.appstore-private-key }}" > fastlane/Api_key.p8
         printf '%s' "${{ inputs.appstore-private-key }}" > fastlane/Api_key.p8
       shell: bash
 
