@@ -17,8 +17,6 @@ on:
         type: string
 
     secrets:
-#      API_KEY_INFO:
-#        required: true
       APPSTORE_KEY_ID:
         required: true
       APPSTORE_ISSUER_ID:
