@@ -29,18 +29,18 @@ runs:
 
     - name: Set up API key file
       run: |
-        mkdir -p fastlane
-        printf '%s' "${{ inputs.appstore-private-key }}" > fastlane/Api_key.p8
+        mkdir -p iosApp/fastlane
+        printf '%s' "${{ inputs.appstore-private-key }}" > iosApp/fastlane/Api_key.p8
       shell: bash
 
     - name: Run Fastlane beta lane
+      working-directory: iosApp
       env:
         APPSTORE_KEY_ID: ${{ inputs.appstore-key-id }}
         APPSTORE_ISSUER_ID: ${{ inputs.appstore-issuer-id }}
         MATCH_PASSWORD: ${{ inputs.match-password }}
         MATCH_GIT_BASIC_AUTHORIZATION: ${{ inputs.match-git-basic-auth }}
       run: |
-        cd iosApp
         bundle install
         bundle exec fastlane ios beta
       shell: bash
