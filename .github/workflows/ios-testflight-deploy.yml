@@ -49,7 +49,7 @@ jobs:
         run: |
           mkdir -p "${{ inputs.working-directory }}/fastlane"
 #          printf '%s' "${{ secrets.APPSTORE_PRIVATE_KEY }}" > "${{ inputs.working-directory }}/fastlane/Api_key.p8"
-          echo "${{ secrets.APPSTORE_PRIVATE_KEY }}" > ${{ inputs.working-directory }}/fastlane/Api_key.p8
+          echo "${{ secrets.APPSTORE_PRIVATE_KEY }}" > "${{ inputs.working-directory }}/fastlane/Api_key.p8"
 
       - name: Run Fastlane beta lane
         env:
