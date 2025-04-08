@@ -19,7 +19,7 @@ on:
     secrets:
 #      API_KEY_INFO:
 #        required: true
-      APPSTORE_API_KEY:
+      APPSTORE_KEY_ID:
         required: true
       APPSTORE_ISSUER_ID:
         required: true
@@ -54,7 +54,7 @@ jobs:
 
       - name: Run Fastlane beta lane
         env:
-          APPSTORE_API_KEY: ${{ secrets.APPSTORE_API_KEY }}
+          APPSTORE_KEY_ID: ${{ secrets.APPSTORE_KEY_ID }}
           APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
 #          APPSTORE_PRIVATE_KEY: ${{ secrets.APPSTORE_PRIVATE_KEY }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
