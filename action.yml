@@ -39,5 +39,8 @@ runs:
         APPSTORE_ISSUER_ID: ${{ inputs.appstore-issuer-id }}
         MATCH_PASSWORD: ${{ inputs.match-password }}
         MATCH_GIT_BASIC_AUTHORIZATION: ${{ inputs.match-git-basic-auth }}
-      run: bundle exec fastlane ios beta
+      run: |
+        cd iosApp
+        bundle install
+        bundle exec fastlane ios beta
       shell: bash
