@@ -48,9 +48,8 @@ jobs:
       - name: Set up API key file
         run: |
           mkdir -p "${{ inputs.working-directory }}/fastlane"
-          printf '%s' "${{ secrets.APPSTORE_PRIVATE_KEY }}" > "${{ inputs.working-directory }}/fastlane/Api_key.p8"
-#          mkdir -p "${{ inputs.working-directory }}/fastlane"
-#          printf '%s' "${{ secrets.API_KEY_INFO }}" > "${{ inputs.working-directory }}/fastlane/api_key_info.json"
+#          printf '%s' "${{ secrets.APPSTORE_PRIVATE_KEY }}" > "${{ inputs.working-directory }}/fastlane/Api_key.p8"
+          echo "${{ secrets.APPSTORE_PRIVATE_KEY }}" > ${{ inputs.working-directory }}/fastlane/Api_key.p8
 
       - name: Run Fastlane beta lane
         env:
