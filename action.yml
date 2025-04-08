@@ -34,7 +34,6 @@ runs:
       shell: bash
 
     - name: Run Fastlane beta lane
-      working-directory: iosApp
       env:
         APPSTORE_KEY_ID: ${{ inputs.appstore-key-id }}
         APPSTORE_ISSUER_ID: ${{ inputs.appstore-issuer-id }}
