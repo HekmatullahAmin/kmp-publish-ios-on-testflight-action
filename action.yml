@@ -29,6 +29,7 @@ runs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
+        ruby-version: '3.3.5'
         bundler-cache: true
 
     - name: Set up API key file
